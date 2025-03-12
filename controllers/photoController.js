@@ -17,7 +17,7 @@ exports.getPhotos = async (req, res) => {
       [userId]
     );
     const photos = result.rows.map((photo) => {
-      return { ...photo, url: `http://localhost:4001/${photo.filepath}`};
+      return { ...photo, url: `https://photo-website-6aqa.onrender.com/${photo.filepath}`};
     });
     res.status(200).json(photos);
   } catch (error) {
@@ -31,7 +31,7 @@ exports.myPhotos = async (req, res) => {
     const result = await pool.query("SELECT * FROM images WHERE userId = $1", [userId]);
 
     const photos = result.rows.map((photo) => {
-      return { ...photo, url: `http://localhost:4001/${photo.filepath}`};
+      return { ...photo, url: `https://photo-website-6aqa.onrender.com/${photo.filepath}`};
     });
 
     return res.status(200).json(photos);
